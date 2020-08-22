@@ -2,4 +2,4 @@
 set -e
 
 echo "Install TigerVNC server"
-apt install tightvncserver
+apt install tightvncserver -y
