@@ -12,9 +12,9 @@ env:
 - DISTRI=centos DESKTOP=icewm
 
 script:
-  - docker build -t local/${DISTRI}-${DESKTOP}-vnc -f ./Dockerfile.${DISTRI}.${DESKTOP}.vnc .
-after_success:
-  - bash .build/trigger_dockerhub.sh ${DISTRI}-${DESKTOP}-vnc
+  - docker build -t moderras/docker-headless-vnc:${DISTRI}-${DESKTOP} -f ./Dockerfile.${DISTRI}.${DESKTOP}.vnc .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push moderras/docker-headless-vnc:${DISTRI}-${DESKTOP}
 
 ## use standard notification to committer
 #notifications:
